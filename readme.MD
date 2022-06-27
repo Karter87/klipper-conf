@@ -21,11 +21,11 @@ Klipper requires to have a printer.cfg file in the pi home folder. Move the exam
 The concept is to have components of 3D printer and it configuration modular. Just like programming Marlin-2.x.
 This phylosphy makes modification on a printer easier to implement.
 
-Boards/<Board_name>/ping.cfg 
-contains the pin configuration of a board
+- Boards/<Board_name>/ping.cfg 
+    - contains the pin configuration of a board
 
-Boards/<Board_name>/default.cfg 
-contains the board specific configuration
+- Boards/<Board_name>/default.cfg 
+    - contains the board specific configuration
 
 Steppers/default.cfg
 
