@@ -33,6 +33,16 @@ Extruder/Mk3_PT1000.cfg
 
 Mcu/main.cfg
 
+## Example files
+For mainsailOS, the default config file location is
+/home/pi/klipper_config 
+
+This repository is placed in this directory, resulting in
+/home/pi/klipper_config/klipper-conf
+
+The example files are placed in the default config folder, e.g.
+/home/pi/moonraker.conf
+/home/pi/mooncord.json
 
 ## Slicers
 - SuperSlicer, (based on PrusaSlicer (based on Slicer))
