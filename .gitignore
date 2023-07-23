@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+.moonraker*.bck
+
 # C extensions
 *.so
 
