@@ -1,0 +1,77 @@
+[server]
+host = 0.0.0.0
+port = 7125
+ssl_port = 7130
+max_upload_size = 1024
+klippy_uds_address = ~/printer_data/comms/klippy.sock
+
+[file_manager]
+enable_object_processing = True
+
+[authorization]
+force_logins = False
+cors_domains = 
+	*://my.mainsail.xyz
+	*://*.local
+	*://mainsailos.cvanderschoor.nl
+	*://my.mainsail.xyz
+trusted_clients = 
+	127.0.0.0/8
+	169.254.0.0/16
+	192.168.50.0/24
+	FE80::/10
+	::1/128
+	2a02:810d:9340:33f6::/64
+
+[octoprint_compat]
+
+[history]
+
+[announcements]
+subscriptions = 
+	mainsail
+
+[update_manager]
+refresh_interval = 168
+enable_auto_refresh = True
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[update_manager mainsail-config]
+type = git_repo
+primary_branch = master
+path = ~/mainsail-config
+origin = https://github.com/mainsail-crew/mainsail-config.git
+managed_services = klipper
+
+[update_manager crowsnest]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
+primary_branch = master
+managed_services = crowsnest
+install_script = tools/install.sh
+
+[update_manager sonar]
+type = git_repo
+path = ~/sonar
+origin = https://github.com/mainsail-crew/sonar.git
+primary_branch = main
+managed_services = sonar
+install_script = tools/install.sh
+
+[power PSU]
+type = homeassistant
+address = {secrets.power_psu.ip_address}
+port = 8123
+device = switch.prusa
+token = {secrets.power_psu.token}
+domain = switch
+locked_while_printing = True
+restart_klipper_when_powered = True
+restart_delay = 1
+
