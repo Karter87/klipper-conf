@@ -5,7 +5,7 @@ __pycache__/
 
 
 .moonraker*.bck
-
+.moonraker.conf.bkp
 # C extensions
 *.so
 
