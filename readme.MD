@@ -1,96 +1,53 @@
-## Motivation
-
-During my studies in 2014, I build my first RepRap 3d Printer.
-Using Prusa's initial i3 design. Only the RAMPS-1.4 and Steppermotors were bought.
-
-The materials I scattered in the workshop of ForZe where I used a MAHO CNC capable mill.
-I modified the serial bus of the machine, so I was able to hook it up to a Laptop with CAM software.
-
-The printer was running repetier firmware and printed 3 other printers. 
-The last one being a Prusa i3 MK3 Clone with Bear modification. (Re)building often the firmware with Marlin-2.x bugfix branch.
-
-When I started with Klipper3D, I missed the default Config approach of Marlin.
-https://github.com/Prutsium/3D-Druckerplausch-Klipper/ from The 602 Wasteland Discord Channel.
-
 ## Installation
 
-Klipper requires to have a printer.cfg file in the pi home folder. Move the example-printer.cfg file to /home/pi/printer.cfg
+Clone this repository to your ~/printer_data/config folder, e.g.
+
+git clone git@github.com:Karter87/klipper-conf.git ~/printer_data/config
 
 ## Configuration
+
+
+### Printer
+The printer.cfg is the main configuration file used by Mainsail. 
+It contains inclusions of the files:
+- mainsail.cfg, containing a read only version managed by the Github repository of mainsail-config
+- klipper.cfg, containing the printer specific settings
+- timelapse.cfg, optional config file for the timelapse which is read only
+- _CLIENT_VARIABLE macro, to set the variables for the mainsail.cfg
+- paramters for the PID parameters, probe offset and bed meshes. Do not change!
+
+### Moonraker
+Contains the update managers and power managers.
+
+
+### Klipper
+
+
+
 
 The concept is to have components of 3D printer and it configuration modular. Just like programming Marlin-2.x.
 This phylosphy makes modification on a printer easier to implement.
 
-- Boards/<Board_name>/ping.cfg 
+- boards/<Board_name>/ping.cfg 
     - contains the pin configuration of a board
 
-- Boards/<Board_name>/default.cfg 
+- boards/<Board_name>/default.cfg 
     - contains the board specific configuration
+	- contains the mcu settings
 
-Steppers/default.cfg
+steppers/default.cfg
 
-Extruder/Mk3_PT1000.cfg
-
-Mcu/main.cfg
-
-## Example files
-For mainsailOS, the default config file location is
-/home/pi/klipper_config 
-
-This repository is placed in this directory, resulting in
-/home/pi/klipper_config/klipper-conf
-
-The example files are placed in the default config folder, e.g.
-/home/pi/moonraker.conf
-/home/pi/mooncord.json
+extruder/Mk3_PT1000.cfg
 
 ## Slicers
 - SuperSlicer, (based on PrusaSlicer (based on Slicer))
     - Klipper Native commands
     - Calibration tools built in
+- PrusaSlicer, since version 2.6 a Klipper support is included. 
 - Cura 
 - Repetier
 
-## Klipper Hosts
-- Fluidd
-- MainSailOS
-- OctoKlipper
+## Other Remarks
+Klipper uses a python based approach where the MCU is programmed with a base configuration, all settings are managed in Klipper. Where with Marlin Fw, the configuration is compiled for the MCU with all settings.
 
-## Firmware based
-- Marlin
-- Repetier
-
-## Mooncord
-'''
-{
-    "connection": {
-        "moonraker_socket_url": "ws://127.0.0.1/websocket",
-        "moonraker_url": "http://127.0.0.1",
-        "moonraker_token": "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        "bot_token": "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        "bot_application_key": "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        "bot_application_id": "1234567890"
-    },
-    "language": {
-        "messages": "en",
-        "command_syntax": "en",
-        "buttons_use_syntax_locale": false
-    },
-    "permission": {
-        "controllers": {
-            "roles": "",
-            "users": "1234567890"
-        },
-        "botadmins": {
-            "_comment": "this Section is managed by the /admin command",
-            "users": [
-                "1234567890"
-            ],
-            "roles": []
-        }
-    },
-    "webcam": {
-        "url": "http://127.0.0.1/webcam/?action=snapshot"
-    }
-}
-'''
+After years of using Marlin, Klipper is much faster in configuring own build 3d printers. 
