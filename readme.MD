@@ -2,7 +2,12 @@
 
 Clone this repository to your ~/printer_data/config folder, e.g.
 
-git clone git@github.com:Karter87/klipper-conf.git ~/printer_data/config
+Clone the reposity
+`git clone git@github.com:Karter87/klipper-conf.git ~/printer_data/config`
+
+Install the softlinks, or use your own config files. 
+`ln -sf /home/pi/mainsail-config/mainsail.cfg mainsail.cfg`
+`ln -sf /home/pi/moonraker-timelapse/klipper_macro/timelapse.cfg timelapse.cfg`
 
 ## Configuration
 
