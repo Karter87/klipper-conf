@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 
 
+printer-*.cfg
+*.zip
 .moonraker*.bck
 .moonraker.conf.bkp
 # C extensions
