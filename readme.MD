@@ -28,8 +28,6 @@ Contains the update managers and power managers.
 ### Klipper
 
 
-
-
 The concept is to have components of 3D printer and it configuration modular. Just like programming Marlin-2.x.
 This phylosphy makes modification on a printer easier to implement.
 
@@ -56,3 +54,32 @@ extruder/Mk3_PT1000.cfg
 Klipper uses a python based approach where the MCU is programmed with a base configuration, all settings are managed in Klipper. Where with Marlin Fw, the configuration is compiled for the MCU with all settings.
 
 After years of using Marlin, Klipper is much faster in configuring own build 3d printers. 
+
+
+# Getting variables from different sources 
+
+DUMP_VARIABLES
+
+## Save_variables
+Reading from the save_variables file
+`printer.save_variables.variables`
+
+Writing to the save_variables file
+SAVE_VARIABLE VARIABLE=currentextruder VALUE='"extruder1"'
+
+`printer.toolhead.extruder`
+
+## Config file / settings
+Getting variables from config files
+- `printer.configfile.settings`
+- `printer["configfile"].config["bed_mesh"]`
+
+## Getting parameters for MACRO
+Gettings parameters
+- `params.<PARAMETER>`
+
+## Getting from
+Getting from MACRO's
+- `printer['gcode_macro _CLIENT_VARIABLE']`
+
+
